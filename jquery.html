@@ -1,0 +1,211 @@
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css.css">
+<script src="jquery-1.9.1.JS"></script>
+<script src="jquery.JS"></script>
+
+<form >
+<ul id="menu">
+<div id="bar">
+</div>
+<li>
+<div class="panel">
+<div class="front">
+<img src="a.jpeg" class="A" >
+<h3><div class="p1" >Contole N°1</div> </h3>
+</div>
+<div class="back">
+<div class="text1">(1 les noms des départements</div> 
+<div class="text2">select*from Departement</div>
+<div class="text1">(2 les numéros et noms des départements en renommant les attributs par «Numero departement» et «Nom départemet»</div> 
+<div class="text2">select Deptno as [Numero departement],Deptnom as [Nom departement] from Departement</div>
+<div class="text1">(3 la liste de toutes les propriétés des employés</div> 
+<div class="text2">select*from Employee</div>
+<div class="text1">(4 Les fonctions des employés </div> 
+<div class="text2">select Fonction from Employee </div>
+<div class="text1">(5 Les fonctions des employés sans double</div> 
+<div class="text2">select distinct Fonction from Employee </div>
+<div class="text1">(6 liste des employés dont le nom commence par M ou N et se termine par A ou L</div> 
+<div class="text2">select*from Employee where( Empnom Like 'M%' and  Empnom Like 'N%')and( Empnom Like '%A'or  Empnom Like 'L%')</div>
+<div class="text1">(7 liste des employés dont le nom commence par M et ne se termine par A</div> 
+<div class="text2">select*from Employee where (Empnom like 'M%') and (empnom like '%A')</div>
+<div class="text1">(8 liste des employés dont le nom commence par M et ne se termine pas par un caractére entre A et L</div> 
+<div class="text2">select*from Employee where(Empnom like'%M') and (Empnom like '[^AL]'</div>
+<div class="text1">(9 noms des départements dont la troiséme letrre est un «d»</div> 
+<div class="text2">select * from DEPARTEMENT where DEPTNOM like  '__d%'</div>
+<div class="text1">(10 les numéros et noms des emolyés du département 20</div> 
+<div class="text2">select Empnom , Empno FROM Employee WHERE Deptno='DEP01'</div>
+<div class="text1">(11 les noms des vendeur du département 30 dont le salaire est supérieure à 2000</div> 
+<div class="text2">select Deptnom FROM Departement,Employee where Deptnom='FARID' AND Salaire='2000'</div>
+<div class="text1">(12 les noms,fonctions et salaire des directeurs et des employes qui ont un salaire superieure à 5000</div> 
+<div class="text2">select Empnom,Fonction,Salaire from Employee where Deptno='DEP01'OR Salaire='8000'</div>
+<div class="text1">(13 les noms,fonctions et numéros des départements des employés qui ne sont pas ni ouvrier ni dericteur</div> 
+<div class="text2">select Deptnom,Fonction,Deptno from Employee,Departement where Fonction<>'Ovrier' and FONCTION<>'Dericteur'</div>
+<div class="text1">(14 les noms,fonctions et salaire des employés qui gagnent entre 2000et7000</div> 
+<div class="text2">SELECT Empnom,Fonction,Salaire FROM Employee WHERE Salaire BETWEEN 2000 AND 7000</div>
+<div class="text1">(15 liste des employés dont le chef n'est pas connu</div> 
+<div class="text2">select*from Employee where Chef is null</div>
+<div class="text1">(16 les noms,fonctions,salaire des employés du département 20 selon l'ordre croissant des salaire</div> 
+<div class="text2">select Empnom,Fonction,Salaire from Employee where Deptno='Dept1' order by Deptno Asc</div>
+<div class="text1">(17 liste des employés tries  selon l'ordre croissant des fonctions et l'ordre decriossant des salaires</div> 
+<div class="text2">select*from Employee order by Fonction ,Salaire desc</div>
+</li>
+</div>
+
+
+
+<li>
+<div class="panel">
+<div class="front">
+<img src="a.jpeg"class="A"  >
+<h3><div class="p1" >Controle N°2</div> </h3>
+</div>
+<div class="back">
+<div class="text1">(1 le nom de le ville dans laquelle travaille'ALAMI'(Lieu) </div> 
+<div class="text2">select Lieu from inner join Employeon Departement.Deptno=Employee.Deptno
+                   where Empnom ='Mourad'</div>
+<div class="text1">(2 les noms des employés ,fonctions et les noms des départements des départements 20 et 30</div> 
+<div class="text2">
+select E.Empnom,E.Fonction,D.Deptnom from EmployeeE,Departement D
+where E.Deptno=D.Deptno and D.Deptno in (1,2);
+</div>
+<div class="text1">(3 les noms des employés et le nom de leur chef</div> 
+<div class="text2">select Empnom,Chef from Employee
+</div>
+<div class="text1">(4 les noms et salaire des employés qui gagnent mois que leurs chefs (affiche aussi les noms des chefs)</div> 
+<div class="text2">select Empnom,salaire,Chef
+from Employee
+where 
+</div>
+<div class="text1">(5 les noms des employes et les noms des projets auxquels ils participer</div> 
+<div class="text2">select E.Empnom,P.Pnom
+from Employee E,Projet P,Participer Pa
+where E.Empo=Pa.Empo and Pa.Pcode=P.Pcode;
+</div>
+<div class="text1">(6 les noms des employés qui n'ont jamaias participe a un projet</div> 
+<div class="text2">select empnom,Pnom from Employee 
+inner join Participer on Employee.Empo=PARTICIPER.Empo
+left join Projet on Participer.PCODE=Projet.Pcode
+</div>
+<div class="text1">(7 les noms des employés et noms de leur chef qui on le meme chef</div>
+
+<div class="text2">select E1.Empnom,E1.Chef
+from Employee E1,Employee E2
+where E1.Empnom!=E2.Empnom
+and E1.Chef=E2.Chef;
+</div> 
+
+<div class="text1">(8 liste de projet auxquels participer 'BENINS Ali'
+</div> 
+<div class="text2">select *
+from Projet P,Participer Pa,Employee E
+where P.Pcode=Pa.Pcode
+and Pa.Empo=E.Empo
+and E.Empnom='Abdelkader';
+
+</div>
+<div class="text2"></div>
+<div class="text1">(9 Liste des ingenieure qui participer au projet 'gestion pharmacie' 
+</div> 
+<div class="text2">select Empnom
+from Projet P,Participer Pa,Employee E
+where P.Pcode=Pa.Pcode
+and Pa.Empo=E.Empo
+and E.Fonction='Ingenieur'
+and P.Pnom='Proj3';
+ </div>
+<div class="text1">(10 les noms de tous les employés et les noms des projet auxquels ils participent (meme s'ils ne participent à aucun projet)
+</div> 
+<div class="text2">select Empnom,Pnom
+ from Employee
+ left join Participer on Employee.Empo=Participer.Empo
+ left join Projet on Participer.Pcode=Projet.Pcode;
+</div>
+</li>
+</div>
+
+<li>
+<div class="panel">
+<div class="front">
+<img src="a.jpeg" class="A" >
+<h3><div class="p1" >Controle N°3</div> </h3>
+</div>
+<div class="back">
+<div class="text1">(1 Afficher les noms en majuscule</div> 
+<div class="text2">select UPPER(Empnom) as nom from Employee
+</div>
+<div class="text1">(2 Afficher les nom et fonctions dans un seul champs.</div> 
+<div class="text2">select Fonction+'  '+Empnom as 'Noms et Fonctions'
+from Employee
+</div>
+<div class="text1">(3 Modifie le lieu de  travaille de  "ALAMI"   a Tanger</div> 
+<div class="text2">update Departement set Lieu='Tanger'
+where Deptno=2;
+'</div>
+<div class="text1">(4 Ajouter a tout les employés au  salaire  600 Dhs.</div> 
+<div class="text2">select *from Employee
+update Employee set Salaire=(Salaire+600)
+
+</div>
+<div class="text1">(5 Ajouter  aux  employés du service "service1"  5% de leur  salaire.</div> 
+<div class="text2">update Employee set Salaire+=(Salaire*0.05)
+where Fonction='Directeur';
+</div>
+<div class="text1">(6 retrancher aux employés qui n ont pas de projet 3% de leur salaire.</div> 
+<div class="text2"> update EMPLOYEE set salaire-=salaire*0.03 where EMPLOYEE.empno not in 
+(select empno from PARTICIPER) 
+</div>
+<div class="text1">(7 Supprimer les employés qui n ont pas de projet.</div> 
+<div class="text2">delete EMPLOYEE where EMPLOYEE.empno not in(select empno from PARTICIPER)
+</div>
+<div class="text1">(8 Compter le nombre de projet par employes</div> 
+<div class="text2">select COUNT(p.pcode) from employee e,PROJET P,PARTICIPER pa where e.empno=pa.empno
+and P.pcode=pa.pcode
+group by P.pcode
+</div>
+<div class="text1">(9 Compter le nombre d employes par departement</div> 
+<div class="text2"> select COUNT(E.EMPNO) from employee e,DEPARTEMENT d where e.deptno=d.deptno
+group by e.empno
+</div>
+<div class="text1">(10 Compter le nombre d'employes par lieu</div> 
+<div class="text2">select COUNT(E.Empo)
+from Employee E,Departement D
+where E.Deptno=D.Deptno
+group by D.Lieu;
+</div>
+<div class="text1">(11 Afficher le ou les employés qui on un maximum de projets</div> 
+<div class="text2">select A.nom,A.prenom,COUNT(E.numeroLivre)as [Nombre LIVRE]
+from Employee E,Projet P,Participer Pa
+where E.Empo=Pa.Empo
+and Pa.Pcode=P.Pcode
+having (E.Empo)>=all(select Empo from Participer)
+</div>
+<div class="text1">(12 Afficher le salaire maximal. </div> 
+<div class="text2">select MAX(Salaire) from Employee
+
+</div>
+<div class="text1">(13 Afficher  le salaire minimal. </div> 
+<div class="text2">select MIN(Salaire) from Employee
+
+</div>
+<div class="text1">(14 Afficher la masse salariale.</div> 
+<div class="text2">
+</div>
+<div class="text1">(15 Afficher  la moyenne des salaires par fonction</div> 
+<div class="text2">select AVG(Salaire)from  Employee
+
+ </div>
+<div class="text1">(16 Afficher les employes qui gagnent plus que la moyenne des salaires</div> 
+<div class="text2">select AVG(Empnom) from Employee where 
+</div>
+
+</li>
+</div>
+
+
+
+</ul>
+<div class="present">
+<h6><div class="p2" >MOURAD MOUFAKIR/TDI201</div></h6>
+</div>
+
+</form >
